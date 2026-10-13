@@ -1,0 +1,25 @@
+{% extends 'admin/base.html' %}
+{% block title %}Login{% endblock %}
+{% block header %}Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form method="POST">
+
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuário</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
