@@ -1,0 +1,38 @@
+{% extends 'admin/base.html' %}
+{% block title %}Criar Usuário{% endblock %}
+{% block header %}Criar Usuário{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <!-- Exibição de mensagens de erro ou sucesso (Flash) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'danger' else 'success' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuário</label>
+                <!-- Mantém o valor digitado caso ocorra algum erro -->
+                <input type="text" id="username" name="username" class="form-control" value="{{ request.form.get('username', '') }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <!-- Corrigido o 'for' para bater com o id="password" -->
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Criar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
